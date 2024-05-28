@@ -1,7 +1,0 @@
-{
-  "name": "ionic-mobheel",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react-vite"
-}
