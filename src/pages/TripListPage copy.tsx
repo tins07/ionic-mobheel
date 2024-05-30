@@ -1,38 +1,32 @@
 import styled from 'styled-components'
 import IonTemplate from '../components/IonTemplate';
 import { useState } from 'react';
-import RoundButton from '../components/RoundButton';
+import SimpleButton from '../components/SimpleButton';
 
-interface Positive{
-  positive: boolean
-}
-interface Comment extends Positive{
-  sum: string,
-  desc: string
+interface Trip{
+  nom:string,
+  depart:string,
+  arrive:string
 }
 
-const CommentBox=({comment}:{comment:Comment})=>{
-  const [expand,setExpand]=useState(false)
+const TripBox=({trip}:{trip:Trip})=>{
   return(
-    <StyledComment positive={comment.positive}>
-      <div>
-        {comment.sum}
-      </div>
-      <RoundButton onClick={()=>{setExpand(!expand)}}>+</RoundButton>
-      {expand && (<div>{comment.desc}</div>)}
-    </StyledComment>
+    <StyledTrip>
+      {trip.nom}<br/>
+      <SimpleButton>PLUS D'OPTIONS</SimpleButton>
+    </StyledTrip>
   )
 }
 const Content=()=>{
-  const [points,setPoints]=useState<Comment[]>([
-    {positive:false,sum:"mauvais freinage",desc:"pas assez freiné"},
-    {positive:true,sum:"bon controles des virages",desc:"la position sur les virages est bien respecté"}
+  const [trips,setTrips]=useState<Trip[]>([
+    {nom:"paris defence",depart:"paris",arrive:"defence"},
+    {nom:"paris defence",depart:"paris",arrive:"defence"}
   ])
   return(
     <div>
       {
-        points.map((cont, i)=>{return (
-          <CommentBox key={i} comment={cont}/>
+        trips.map((cont, i)=>{return (
+          <TripBox key={i} trip={cont}/>
         )})
       }
 
@@ -45,11 +39,15 @@ const TripListPage = () => {
   );
 };
 
-const StyledComment=styled.div<Positive>`
-background-color: ${(props)=>{return(props.positive?'#68d568':'#ff5454')}};
-border-radius: 5px;
+const StyledTrip=styled.div`
 padding: 14px;
-margin-top: 12px;
-`
+color: royalblue;
+box-shadow: 0px 5px 5px #0000001f;
+margin: 4px 12px;
+border-radius:5px;
 
+Button{
+  margin-top:6px;
+}
+`
 export default TripListPage;

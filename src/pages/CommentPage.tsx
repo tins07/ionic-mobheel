@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import IonTemplate from '../components/IonTemplate';
 import { useState } from 'react';
 import RoundButton from '../components/RoundButton';
+import { IonIcon } from '@ionic/react';
+import {chevronDownOutline, chevronUpOutline } from 'ionicons/icons';
 
 interface Positive{
   positive: boolean
@@ -15,8 +17,11 @@ const CommentBox=({comment}:{comment:Comment})=>{
   const [expand,setExpand]=useState(false)
   return(
     <StyledComment positive={comment.positive}>
+      <b>{comment.positive ? "Point fort" : "Point faible"}:</b><br/>
       <div>{comment.sum}</div>
-      <RoundButton onClick={()=>{setExpand(!expand)}}>+</RoundButton>
+      <RoundButton onClick={()=>{setExpand(!expand)}}>
+        <IonIcon icon={!expand ? chevronDownOutline : chevronUpOutline}/>
+      </RoundButton>
       {expand && (<div>{comment.desc}</div>)}
     </StyledComment>
   )
