@@ -4,6 +4,7 @@ import './Tab1.css';
 import styled from 'styled-components'
 import BarChart from '../components/BarChart';
 import BarChart2 from '../components/BarChart2';
+import CommentPage from './CommentPage';
 
 const Tab1: React.FC = () => {
   return (
@@ -23,7 +24,7 @@ const Tab1: React.FC = () => {
           <IonButton onClick={()=>{console.log("test")}}>Default</IonButton>
         </StyledButton>
         <ChartWrap>
-          <BarChart2/>
+          <CommentPage/>
         </ChartWrap>
         <ExploreContainer name="Tab 1 page" />
       </IonContent>
